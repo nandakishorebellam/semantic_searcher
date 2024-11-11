@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 # pylint: disable=line-too-long
-"""Module contains implementation of duplicate finder from an excel containing all details of the tickets."""
+"""Module contains implementation of semantic searcher from a csv containing all details of the tweets."""
 
 import pandas as pd
 import faiss
@@ -10,12 +10,12 @@ from sentence_transformers import SentenceTransformer
 
 
 class DuplicateFinder:
-    """Base class for duplicate finder."""
+    """Base class for semantic searcher."""
     def __init__(self, csv_file: str, model_id: str):
         """Constructor of the class.
 
         Args:
-            csv_file (str): path of the file containing tickets
+            csv_file (str): path of the file containing tweets
             model_id (str): name of the hugging face model used for multilingual search
         """
         self.df = pd.read_csv(csv_file, encoding='Latin-1')
@@ -26,7 +26,7 @@ class DuplicateFinder:
 
     def encode_summaries(self):
         """Encoding the text into vector embeddings."""
-        self.vectors = self.encoder.encode(self.df.Summary)
+        self.vectors = self.encoder.encode(self.df.OriginalTweet)
         self.dim = self.vectors.shape[1]
 
     def build_vector_database(self):
@@ -53,10 +53,10 @@ class DuplicateFinder:
 
 
 # pylint: disable=line-too-long
-finder = DuplicateFinder(csv_file='JiraSearchRequest.csv', model_id='paraphrase-multilingual-MiniLM-L12-v2')
+finder = DuplicateFinder(csv_file='Corona_NLP_test.csv', model_id='paraphrase-multilingual-MiniLM-L12-v2')
 finder.encode_summaries()
 finder.build_vector_database()
-results = finder.search(query='Zusammenhang mit der Berichterstattung zusammen', k=3)
+results = finder.search(query='Do you remember the last time you paid $2.99 a gallon for regular gas in Los Angeles?Prices at the pump are going down.', k=3)
 
 # Print search results
 print(results)

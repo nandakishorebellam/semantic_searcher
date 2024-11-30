@@ -1,0 +1,145 @@
+/* General styles */
+body {
+    font-family: 'Roboto', Arial, sans-serif;
+    background-color: #f0f8ff; /* Light blue background */
+    margin: 0;
+    padding: 0;
+    color: #333333f6;
+}
+
+/* Header styles */
+h1 {
+    text-align: center;
+    margin-top: 20px;
+    color: #2f3c49;
+    font-size: 2.5em;
+    text-shadow: 1px 1px 2px #ccc;
+}
+
+/* Form container */
+form {
+    max-width: 600px;
+    margin: 30px auto;
+    background-color: #ffffff;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Softer shadow */
+    font-size: 1.1em;
+}
+
+/* Form styling */
+form {
+    max-width: 600px;
+    margin: 30px auto;
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Form group styling (label and input fields) */
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+/* Add space between fields */
+.form-group.spaced {
+    margin-top: 20px;
+}
+
+/* Button styling */
+form button {
+    background-color: #254b64;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 20px;
+    display: block;
+    width: 100%;
+}
+
+form button:hover {
+    background-color: #31678b;
+}
+
+/* Results title */
+.results-title {
+    width: 80%; /* Matches the table's width */
+    margin: 0 auto; /* Centers the title */
+    text-align: left; /* Aligns the text to the left */
+    margin-left: 10%;
+    color: #2c3e50;
+    font-size: 1.5em;
+    margin-bottom: 15px; /* Adds space between the title and the table */
+    font-weight: bold;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1); /* Subtle shadow for style */
+}
+
+/* Table styles */
+table {
+    width: 80%;
+    margin: 30px auto;
+    border-collapse: collapse; /* Removes double borders */
+    background-color: #ffffff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* Adds depth */
+}
+
+th {
+    background-color: #254b64; /* Vibrant header color */
+    color: white;
+    padding: 12px;
+    font-size: 1.1em;
+    text-align: center;
+    border: none; /* Removes header cell borders */
+    text-transform: uppercase; /* Adds emphasis */
+}
+
+td {
+    padding: 12px;
+    text-align: center;
+    font-size: 1em;
+    border: none; /* Removes cell borders */
+    color: #2c3e50; /* Dark text color for readability */
+}
+
+tr:nth-child(even) {
+    background-color: #f9f9f9; /* Light gray for alternate rows */
+}
+
+tr:hover {
+    background-color: #eaf2f8; /* Light blue on hover */
+    transition: background-color 0.3s ease; /* Smooth transition */
+}
+
+/* Add a small margin between the table and the rest of the content */
+table + p, table + h2 {
+    margin-top: 20px;
+}
+
+/* Center-aligned paragraph */
+.centered-message {
+    text-align: center; /* Aligns the text horizontally */
+    font-size: 1.2em; /* Slightly larger font size */
+    color: #2c3e50; /* Matches the color theme */
+    margin-top: 20px; /* Adds spacing from other elements */
+}

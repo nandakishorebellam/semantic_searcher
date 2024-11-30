@@ -6,19 +6,29 @@
     <title>Semantic Search</title>
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="icon" href="{% static 'favicon.ico' %}" />
 </head>
 <body>
     <h1>Upload CSV and Search Query</h1>
     <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
+
         <div class="form-group">
             <label for="{{ form.csv_file.id_for_label }}">{{ form.csv_file.label }}</label>
             {{ form.csv_file }}
         </div>
+
         <div class="form-group spaced">
             <label for="{{ form.query.id_for_label }}">{{ form.query.label }}</label>
             {{ form.query }}
         </div>
+
+        <div class="form-group spaced">
+            <label for="{{ form.target_field.id_for_label }}">{{ form.target_field.label }}</label>
+            {{ form.target_field }}
+            <p class="info-text">The target field is case-sensitive and should match the column name in your CSV file.</p>
+        </div>
+
         <button type="submit">Search</button>
     </form>
 

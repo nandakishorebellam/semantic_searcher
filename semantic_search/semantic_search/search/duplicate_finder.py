@@ -11,22 +11,28 @@ from sentence_transformers import SentenceTransformer
 
 class SemanticSearcher:
     """Base class for semantic searcher."""
-    def __init__(self, df: pd.DataFrame, model_id: str):
+    def __init__(self, df: pd.DataFrame, model_id: str, target_field: str):
         """Constructor of the class.
 
         Args:
-            df (pd.DataFrame): DataFrame containing tweet data
-            model_id (str): name of the hugging face model used for multilingual search
+            df: DataFrame containing tweet data
+            model_id: Name of the hugging face model used for multilingual search
+            target_field: Field of the dataframe which has to be searched
         """
         self.df = df
         self.encoder = SentenceTransformer(model_id)
+        self.target_field = target_field
+        # Check if the target_field exists in the dataframe
+        if self.target_field not in self.df.columns:
+            raise ValueError(f"Target field '{self.target_field}' not found in the uploaded CSV.")
+
         self.dim = None
         self.index = None
         self.vectors = None
 
     def encode_summaries(self):
         """Encoding the text into vector embeddings."""
-        self.vectors = self.encoder.encode(self.df['OriginalTweet'])
+        self.vectors = self.encoder.encode(self.df[self.target_field])
         self.dim = self.vectors.shape[1]
 
     def build_vector_database(self):

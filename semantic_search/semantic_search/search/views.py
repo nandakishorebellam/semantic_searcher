@@ -15,10 +15,11 @@ def upload_and_search(request):
             # Read the uploaded file into a DataFrame
             csv_file = request.FILES['csv_file']
             query = form.cleaned_data['query']
+            target_field: str = form.cleaned_data['target_field']
 
             # Convert the in-memory file to a DataFrame
             df: pd.DataFrame = pd.read_csv(csv_file, encoding='Latin-1')
-            searcher = SemanticSearcher(df, 'paraphrase-multilingual-MiniLM-L12-v2')
+            searcher = SemanticSearcher(df, 'paraphrase-multilingual-MiniLM-L12-v2', target_field)
             searcher.encode_summaries()
             searcher.build_vector_database()
             results = searcher.search(query, k=3)

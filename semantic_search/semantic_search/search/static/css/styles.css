@@ -62,6 +62,20 @@ form {
     margin-top: 20px;
 }
 
+/* New field styling */
+.form-group label[for="{{ form.target_field.id_for_label }}"] {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.form-group input[name="target_field"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
 /* Button styling */
 form button {
     background-color: #254b64;
@@ -142,4 +156,12 @@ table + p, table + h2 {
     font-size: 1.2em; /* Slightly larger font size */
     color: #2c3e50; /* Matches the color theme */
     margin-top: 20px; /* Adds spacing from other elements */
+}
+
+/* Target Field Info Text */
+.info-text {
+    font-size: 0.9em;
+    color: #666;
+    margin-top: 5px;
+    font-style: italic;
 }
